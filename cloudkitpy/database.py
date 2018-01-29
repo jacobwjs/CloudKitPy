@@ -8,10 +8,12 @@
 
 # !/usr/bin/env python
 
-from datatypes import Record
-from datatypes import Zone
-from request import Request
-from helpers import parse
+from __future__ import absolute_import
+from __future__ import print_function
+from .datatypes import Record
+from .datatypes import Zone
+from .request import Request
+from .helpers import parse
 
 
 class Database:
@@ -96,8 +98,8 @@ class Database:
                     operation_type = 'update'
                     record.record_change_tag = fetched_record.record_change_tag
                 else:
-                    print """Record doesn't already exist and is
-                     missing a record type!"""
+                    print("""Record doesn't already exist and is
+                     missing a record type!""")
 
             if operation_type is not None:
                 operation = {

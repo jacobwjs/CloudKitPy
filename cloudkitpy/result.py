@@ -8,7 +8,8 @@
 
 # !/usr/bin/env python
 
-from error import CKError
+from __future__ import absolute_import
+from .error import CKError
 
 
 class Result:

@@ -8,9 +8,10 @@
 
 # !/usr/bin/env python
 
+from __future__ import absolute_import
 import datetime
-from helpers import parse
-from datatypes import Reference
+from .helpers import parse
+from .datatypes import Reference
 
 
 class CKValue:

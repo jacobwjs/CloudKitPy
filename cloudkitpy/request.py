@@ -8,6 +8,7 @@
 
 # !/usr/bin/env python
 
+from __future__ import absolute_import
 from datetime import datetime
 import base64
 import hashlib
@@ -16,7 +17,7 @@ from ecdsa import SigningKey
 import ecdsa
 import requests
 import json
-from result import Result
+from .result import Result
 
 
 class Request:
@@ -30,16 +31,19 @@ class Request:
 
     @classmethod
     def __hash_string(cls, string):
-        return hashlib.sha256(string).digest()
+        # return hashlib.sha256(string).digest()
+        return hashlib.sha256(string.encode('utf-8')).digest()
 
     @classmethod
     def __encode_string(cls, string):
-        return base64.b64encode(string)
+        # return base64.b64encode(string.encode())
+        return base64.b64encode(string.encode('utf-8')).decode()
 
     @classmethod
     def __hash_encode_string(cls, string):
-        hashed = cls.__hash_string(string)
-        encoded = cls.__encode_string(hashed)
+        # hashed = cls.__hash_string(string)
+        # encoded = cls.__encode_string(hashed)
+        encoded = base64.b64encode(cls.__hash_string(string)).decode()
         return encoded
 
     @classmethod
@@ -72,7 +76,8 @@ class Request:
             hashfunc=hashlib.sha256,
             sigencode=ecdsa.util.sigencode_der
         )
-        signature = cls.__encode_string(signature)
+        # signature = cls.__encode_string(signature)
+        signature = base64.b64encode(signature)
         return signature
 
     @classmethod
@@ -97,7 +102,7 @@ class Request:
         message = cls.__create_message(date, payload, path)
         signed_message = cls.__sign_message(
             container.cert_path,
-            message
+            message.encode('utf-8')
         )
 
         headers = {

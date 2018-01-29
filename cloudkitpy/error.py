@@ -8,8 +8,9 @@
 
 # !/usr/bin/env python
 
-from datatypes import ZoneID
-from helpers import parse
+from __future__ import absolute_import
+from .datatypes import ZoneID
+from .helpers import parse
 
 
 class CKError:

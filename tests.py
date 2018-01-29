@@ -8,6 +8,7 @@
 
 # !/usr/bin/env python
 
+from __future__ import absolute_import
 import unittest
 from datetime import datetime
 from cloudkitpy.cloudkit import CloudKit
@@ -619,7 +620,7 @@ class RequestTests(unittest.TestCase):
         hashed_string = Request._Request__hash_string(
             self.hello_world
         )
-        hashed_string = "".join("{:02x}".format(ord(c)) for c in hashed_string)
+        hashed_string = "".join("{:02x}".format(c) for c in hashed_string)
         self.failUnless(hashed_string == self.expected_hash)
 
     def test_hash_encode(self):

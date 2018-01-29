@@ -15,7 +15,7 @@ def parse(json, key):
         value = json[key]
     except KeyError:
         return None
-    except Exception, e:
+    except Exception as e:
         raise e
 
     return value

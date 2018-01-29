@@ -11,7 +11,8 @@
 # References for Types and Dictionaries can be found at:
 # https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/CloutKitWebServicesReference/Types/Types.html
 
-from helpers import parse
+from __future__ import absolute_import
+from .helpers import parse
 
 
 class Asset:

@@ -8,10 +8,11 @@
 
 # !/usr/bin/env python
 
-from database import Database
-from datatypes import UserInfo
-from request import Request
-from helpers import parse
+from __future__ import absolute_import
+from .database import Database
+from .datatypes import UserInfo
+from .request import Request
+from .helpers import parse
 
 
 class Container:

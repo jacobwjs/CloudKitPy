@@ -8,8 +8,9 @@
 
 # !/usr/bin/env python
 
+from __future__ import absolute_import
 import logging
-from container import Container
+from .container import Container
 
 
 class CloudKit:
